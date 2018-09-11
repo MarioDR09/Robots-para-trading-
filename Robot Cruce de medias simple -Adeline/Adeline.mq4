@@ -107,7 +107,7 @@ int start() {
    //| FIN                                                              |
    //+------------------------------------------------------------------+
 
-   //Check position
+   //Checamos la posición
    bool IsTrade = False;
 
    for (int i = 0; i < Total; i ++) {
@@ -115,7 +115,7 @@ int start() {
       if(OrderType() <= OP_SELL &&  OrderSymbol() == Symbol() && OrderMagicNumber() == MagicNumber) {
          IsTrade = True;
          if(OrderType() == OP_BUY) {
-            //Close
+            //Cerramos
 
             //+------------------------------------------------------------------+
             //| Inicio de Señal (Salir de la compra)                             |
