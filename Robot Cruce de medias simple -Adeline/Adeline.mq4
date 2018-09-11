@@ -121,12 +121,12 @@ int start() {
             //| Inicio de Señal (Salir de la compra)                             |
             //+------------------------------------------------------------------+
 	    
-	    / * REGLAS DE SALIDA ADELINE:
+	    /* REGLAS DE SALIDA ADELINE:
                 Salir de la operación larga cuando SMA (10) cruza SMA (40) desde la parte superior
                 Salir de la operación corta cuando SMA (10) cruza SMA (40) desde abajo
                 Parada dura de 30 pips (30 pips del precio de entrada inicial)
                 Trailing stop de 30 pips
-             * /
+             */
             
              // T4: reglas de salida de código
             
@@ -187,10 +187,10 @@ int start() {
    //| Inicio de Señal (Entradas)                                       |
    //+------------------------------------------------------------------+
    
-   / * REGLAS DE ENTRADA ADELINE:
+   /* REGLAS DE ENTRADA ADELINE:
        operación larga cuando SMA (10) cruza SMA (40) desde abajo
       operación corta cuando SMA (10) cruza SMA (40) desde la parte superior
-    * /
+    */
 
     // reglas de entrada de código
    
@@ -243,10 +243,10 @@ int start() {
          Ticket = OrderSend(Symbol(), OP_SELL, Lots, Bid, Slippage, StopLossLevel, TakeProfitLevel, "Sell(#" + MagicNumber + ")", MagicNumber, 0, DeepPink);
          if(Ticket > 0) {
             if (OrderSelect(Ticket, SELECT_BY_TICKET, MODE_TRADES)) {
-				Print("SELL order opened : ", OrderOpenPrice());
+				Print("Orden de Venta abierta : ", OrderOpenPrice());
                 if (SignalMail) SendMail("[Signal Alert]", "[" + Symbol() + "] " + DoubleToStr(Bid, Digits) + " Open Sell");
 			} else {
-				Print("Error opening SELL order : ", GetLastError());
+				Print("Error en apertura de venta : ", GetLastError());
 			}
          }
          return(0);
