@@ -3,7 +3,7 @@
 //|                                                                  |
 //|                                                                  |
 //| El autor no será responsable de los daños y perjuicios,          |
-  |no es herramienta para inversión                                  |
+//|no es herramienta para inversión                                  |
 //| Úselo bajo su propio riesgo.                                     |
 //|                http://sufx.core.t3-ism.net/ExpertAdvisorBuilder/ |
 //|    
@@ -13,18 +13,18 @@
 //+------------------- NO QUITAR ESTE HEADER !!! --------------------+
    
    /* 
-      ADELINE ENTRY RULES:
-      Enter a long trade when SMA(10) crosses SMA(40) from bottom
-      Enter a short trade when SMA(10) crosses SMA(40) from top
-   
-      ADELINE EXIT RULES:
-      Exit the long trade when SMA(10) crosses SMA(40) from top
-      Exit the short trade when SMA(10) crosses SMA(40) from bottom
-      30 pips hard stop (30pips from initial entry price)
-      Trailing stop of 30 pips
-   
-      ADELINE POSITION SIZING RULE:
-      1 Lote
+      REGLAS DE ENTRADA ADELINE:
+       operación larga cuando SMA (10) cruza SMA (40) desde abajo
+       operación corta cuando SMA (10) cruza SMA (40) desde la parte superior
+   
+       REGLAS DE SALIDA ADELINE:
+       Salir de la operación larga cuando SMA (10) cruza SMA (40) desde la parte superior
+       Salir de la operación corta cuando SMA (10) cruza SMA (40) desde abajo
+       Parada dura de 30 pips (30 pips del precio de entrada inicial)
+       Trailing stop de 30 pips
+   
+       TAMAÑO DE LA POSICIÓn: 
+       1 lote
    */
 
 #define SIGNAL_NONE 0
@@ -33,10 +33,10 @@
 #define SIGNAL_CLOSEBUY 3
 #define SIGNAL_CLOSESELL 4
 
-#property copyright "Expert Advisor Builder"
-#property link      "http://sufx.core.t3-ism.net/ExpertAdvisorBuilder/"
+#copyright "Expert Advisor Builder"
 
-// TDL 5: Stops and Position Sizing
+
+// TDL 5: Tamaño de posición y stops (estructura) 
 
 extern int MagicNumber = 12345;
 extern bool SignalMail = False;
@@ -54,11 +54,11 @@ int Order = SIGNAL_NONE;
 int Total, Ticket, Ticket2;
 double StopLossLevel, TakeProfitLevel, StopLevel;
 
-// To-Do-List (TDL) 1: Declare Variables 
+//Declaración de variables
 double sma10_1, sma10_2, sma40_1, sma40_2;
 
 //+------------------------------------------------------------------+
-//| Expert initialization function                                   |
+//| Función de inicialización de nuestro Experto                     |
 //+------------------------------------------------------------------+
 int init() {
    
@@ -67,19 +67,19 @@ int init() {
    return(0);
 }
 //+------------------------------------------------------------------+
-//| Expert initialization function - END                             |
+//| Función de inicialización de nuestro Experto   - FIN             |
 //+------------------------------------------------------------------+
 //+------------------------------------------------------------------+
-//| Expert deinitialization function                                 |
+//| Función de deinicialización de nuestro Experto                   |
 //+------------------------------------------------------------------+
 int deinit() {
    return(0);
 }
 //+------------------------------------------------------------------+
-//| Expert deinitialization function - END                           |
+//|  Función de deinicialización de nuestro Experto - FIN            |
 //+------------------------------------------------------------------+
 //+------------------------------------------------------------------+
-//| Expert start function                                            |
+//| Empezamos fucniòn del experto                                    |
 //+------------------------------------------------------------------+
 int start() {
 
@@ -87,7 +87,7 @@ int start() {
    Order = SIGNAL_NONE;
 
    //+------------------------------------------------------------------+
-   //| Variable Setup                                                   |
+   //| Setup de variables                                               |
    //+------------------------------------------------------------------+
  
    // TDL 2: Assign Values to variables
@@ -104,7 +104,7 @@ int start() {
    if (TakeProfit < StopLevel) TakeProfit = StopLevel;
 
    //+------------------------------------------------------------------+
-   //| Variable Setup - END                                             |
+   //| FIN                                                              |
    //+------------------------------------------------------------------+
 
    //Check position
