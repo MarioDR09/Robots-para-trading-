@@ -90,8 +90,8 @@ int start() {
    //| Setup de variables                                               |
    //+------------------------------------------------------------------+
  
-   // TDL 2: Assign Values to variables
-
+   // Asignando valores a las variables
+   
    sma10_1 = iMA(NULL, 0, 10, 0, MODE_SMA, PRICE_CLOSE, 1); // c
    sma10_2 = iMA(NULL, 0, 10, 0, MODE_SMA, PRICE_CLOSE, 2); // b
    sma40_1 = iMA(NULL, 0, 40, 0, MODE_SMA, PRICE_CLOSE, 1); // d
@@ -118,17 +118,17 @@ int start() {
             //Close
 
             //+------------------------------------------------------------------+
-            //| Signal Begin(Exit Buy)                                           |
+            //| Inicio de Señal (Salir de la compra)                             |
             //+------------------------------------------------------------------+
-
-            /* ADELINE EXIT RULES:
-               Exit the long trade when SMA(10) crosses SMA(40) from top
-               Exit the short trade when SMA(10) crosses SMA(40) from bottom
-               30 pips hard stop (30pips from initial entry price)
-               Trailing stop of 30 pips
-            */
-            
-            // TDL 4: Code Exit Rules
+	    
+	    / * REGLAS DE SALIDA ADELINE:
+                Salir de la operación larga cuando SMA (10) cruza SMA (40) desde la parte superior
+                Salir de la operación corta cuando SMA (10) cruza SMA (40) desde abajo
+                Parada dura de 30 pips (30 pips del precio de entrada inicial)
+                Trailing stop de 30 pips
+             * /
+            
+             // T4: reglas de salida de código
             
             if(sma10_2 > sma40_2 && sma40_1 >= sma10_1) Order = SIGNAL_CLOSEBUY; // Rule to EXIT a Long trade
 
@@ -155,13 +155,13 @@ int start() {
             //Close
 
             //+------------------------------------------------------------------+
-            //| Signal Begin(Exit Sell)                                          |
+            //| Inicio de Señal (Salir de la venta)                              |
             //+------------------------------------------------------------------+
 
             if (sma40_2 > sma10_2 && sma10_1 >= sma40_1) Order = SIGNAL_CLOSESELL; // Rule to EXIT a Short trade
 
             //+------------------------------------------------------------------+
-            //| Signal End(Exit Sell)                                            |
+            //| Finde nuesta señal (Salida venta)                                |
             //+------------------------------------------------------------------+
 
             if (Order == SIGNAL_CLOSESELL) {
@@ -184,15 +184,15 @@ int start() {
    }
 
    //+------------------------------------------------------------------+
-   //| Signal Begin(Entries)                                            |
+   //| Inicio de Señal (Entradas)                                       |
    //+------------------------------------------------------------------+
+   
+   / * REGLAS DE ENTRADA ADELINE:
+       operación larga cuando SMA (10) cruza SMA (40) desde abajo
+      operación corta cuando SMA (10) cruza SMA (40) desde la parte superior
+    * /
 
-   /* ADELINE ENTRY RULES:
-      Enter a long trade when SMA(10) crosses SMA(40) from bottom
-      Enter a short trade when SMA(10) crosses SMA(40) from top
-   */
-
-   // TDL 3: Code Entry Rules
+    // reglas de entrada de código
    
    if (sma40_2 > sma10_2 && sma10_1 >= sma40_1) Order = SIGNAL_BUY; // Rule to ENTER a Long trade
 
@@ -200,10 +200,10 @@ int start() {
 
 
    //+------------------------------------------------------------------+
-   //| Signal End                                                       |
+   //| Señal de salida                                                  |
    //+------------------------------------------------------------------+
 
-   //Buy
+   //Comprar
    if (Order == SIGNAL_BUY) {
       if(!IsTrade) {
          //Check free margin
@@ -228,7 +228,7 @@ int start() {
       }
    }
 
-   //Sell
+   //Vender
    if (Order == SIGNAL_SELL) {
       if(!IsTrade) {
          //Check free margin
