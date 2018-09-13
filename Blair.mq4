@@ -6,7 +6,7 @@
 #define SIGNAL_CLOSEBUY 3
 #define SIGNAL_CLOSESELL 4
 
-# copyright "Expert Advisor Builder"
+// # copyright "Expert Advisor Builder"
 
 extern int MagicNumber = 00015;
 extern bool SignalMail = False;
