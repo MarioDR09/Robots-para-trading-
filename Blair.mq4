@@ -1,3 +1,4 @@
+// Se modificó uno de los expertos de metatrader NO SIRVER PARA INVERTIR
 
 #define SIGNAL_NONE 0
 #define SIGNAL_BUY   1
@@ -20,14 +21,14 @@ extern int TrailingStop = 0;
 extern bool isSizingOn = True;
 extern int Risk = 2;
 
-// TDL 14: Declare Extern Variables
+// Declaramos variables externas
 
 extern int keltnerPeriod = 20;
-extern int tpATR_k = 3; // Take Profit Multiple of ATR
-extern int slATR_k = 2; // Stop Loss Multiple of ATR
+extern int tpATR_k = 3; // Toamos múltiples ganancuas de ATR
+extern int slATR_k = 2; // Stop Loss de ATR
 extern double atr_period = 20;
-extern int atr_shift = 11; // Number of bars before current (used for volatility rule)
-extern int timeExitPeriod = 10; // Number of bars until trade is exited (used for generic exit rule)
+extern int atr_shift = 11; // Número de barras antes del actual (usados para regla de volatilidad)
+extern int timeExitPeriod = 10; // Número de barras que son utilizadas (usadas para unidad genérica)
 
 
 
@@ -45,7 +46,7 @@ double timeexit;
 int candleType;
 
 //+------------------------------------------------------------------+
-//| Expert initialization function                                   |
+//| Inciando inicialización del Experto                              |
 //+------------------------------------------------------------------+
 int init() {
    
@@ -55,16 +56,16 @@ int init() {
    return(0);
 }
 //+------------------------------------------------------------------+
-//| Expert initialization function - END                             |
+//| FIN                                                              |
 //+------------------------------------------------------------------+
 //+------------------------------------------------------------------+
-//| Expert deinitialization function                                 |
+//| Deinicicialización                                               |
 //+------------------------------------------------------------------+
 int deinit() {
    return(0);
 }
 //+------------------------------------------------------------------+
-//| Expert deinitialization function - END                           |
+//| FIN                                                              |
 //+------------------------------------------------------------------+
 //+------------------------------------------------------------------+
 //| Expert start function                                            |
